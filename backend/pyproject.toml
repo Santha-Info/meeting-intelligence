@@ -1,0 +1,20 @@
+[project]
+name = "meeting-intelligence-assistant"
+version = "1.0.0"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["B008"]  # FastAPI's File(...) defaults are idiomatic
+
+[tool.ruff.lint.per-file-ignores]
+"app/prompts.py" = ["E501"]  # prompt prose reads better unwrapped

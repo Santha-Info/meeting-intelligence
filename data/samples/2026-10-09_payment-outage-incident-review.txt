@@ -1,0 +1,28 @@
+Meeting: Incident Review - Payment Failures on 7 October
+Date: 2026-10-09
+Attendees: Arjun Mehta (Engineering Lead), Sofia Alvarez (SRE), Kenji Watanabe (Backend Engineer), Priya Raman (Product Manager)
+
+00:00:04 Sofia Alvarez: This is the blameless review for the payment failure incident on October 7th. Impact window was 14:02 to 14:49 UTC, 47 minutes. About 18 percent of card payments failed during that window.
+00:00:40 Priya Raman: Do we know how many customers were affected?
+00:00:46 Sofia Alvarez: Roughly 2,300 failed checkout attempts. We estimate around 1,100 unique customers. Some retried successfully.
+00:01:15 Kenji Watanabe: Root cause first. At 13:55 we deployed version 4.12 of the payments service. It included a change to the connection pool for the payment gateway client. The maximum pool size was reduced from 50 to 10 by mistake. A config default was overridden in the new Helm chart.
+00:02:02 Arjun Mehta: So under lunchtime load the pool was exhausted and requests timed out after five seconds.
+00:02:10 Kenji Watanabe: Exactly. The gateway itself was healthy. Our client was starving for connections.
+00:02:35 Sofia Alvarez: Detection was slow. The first alert fired at 14:16, fourteen minutes after impact started. The alert threshold was a 25 percent error rate sustained for ten minutes, which is too lenient for payments.
+00:03:10 Priya Raman: Why did it take until 14:49 to recover?
+00:03:16 Sofia Alvarez: The on-call engineer first suspected the gateway provider and opened a ticket with them. That cost about twenty minutes. Rollback started at 14:41 and completed at 14:49.
+00:03:50 Arjun Mehta: What went well?
+00:03:55 Sofia Alvarez: Rollback itself was fast, eight minutes. And the status page was updated within five minutes of the alert, which customer support appreciated.
+00:04:30 Kenji Watanabe: What went badly: no canary stage for the payments service, the config change was not visible in the pull request diff because it came from a chart default, and the dashboard did not show connection pool saturation.
+00:05:12 Arjun Mehta: Let's agree actions. First, canary deployments for payments.
+00:05:20 Sofia Alvarez: I can set up a canary that routes 5 percent of traffic for fifteen minutes with automatic rollback on error-rate increase. I will have it live by October 23rd.
+00:05:48 Arjun Mehta: Decision: no payments service deployment goes to full production without the canary stage, effective once Sofia's canary is live. Until then, payments deploys need a second approver from SRE.
+00:06:20 Kenji Watanabe: I will add a CI check that fails the build if connection pool settings differ from the documented baseline, and render the final Helm values in the pull request. Target October 16th.
+00:06:50 Sofia Alvarez: I will tighten the payment error alert to 5 percent for three minutes and add a pool saturation panel and alert. That one I can do by October 13th.
+00:07:15 Priya Raman: From the product side, should we compensate affected customers?
+00:07:24 Arjun Mehta: I think a small credit is reasonable, but that is a business decision.
+00:07:35 Priya Raman: I will propose a 5 dollar credit for customers with a failed payment that was not retried, and get finance approval by October 14th.
+00:08:02 Sofia Alvarez: Also, the on-call runbook should say to check our own client metrics before suspecting the provider. I will update the runbook this week, by October 12th.
+00:08:30 Arjun Mehta: Last point. Kenji, please also double check the same chart default is not affecting the refunds service.
+00:08:40 Kenji Watanabe: Will do, I will confirm by tomorrow, October 10th.
+00:08:55 Sofia Alvarez: I will publish the written incident report to the engineering wiki by October 11th. Thanks everyone.

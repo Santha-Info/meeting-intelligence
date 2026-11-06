@@ -1,0 +1,52 @@
+WEBVTT
+NOTE Meeting: Sprint 21 Retrospective
+NOTE Date: 2026-10-16
+NOTE Attendees: Arjun Mehta, Kenji Watanabe, Mei Lin, Daniel Brooks
+
+00:00:03.000 --> 00:00:18.000
+<v Arjun Mehta>Welcome to the sprint 21 retro. Format as usual: what went well, what didn't, and actions. Let's keep it to twenty minutes.
+
+00:00:20.000 --> 00:00:44.000
+<v Mei Lin>Went well: we finished the default payment method endpoint two days early, and the new contract tests caught a breaking change from the mobile team before it merged.
+
+00:00:46.000 --> 00:01:10.000
+<v Daniel Brooks>Also the pairing sessions on the ledger prototype were really useful. I understand double-entry a lot better now.
+
+00:01:12.000 --> 00:01:41.000
+<v Kenji Watanabe>What didn't go well: our CI pipeline is slow. The full test suite takes 26 minutes, and people are batching changes to avoid waiting, which makes reviews bigger.
+
+00:01:43.000 --> 00:02:05.000
+<v Mei Lin>Agreed. And flaky tests. The address autocomplete integration test failed randomly five times this sprint because it calls the real maps API.
+
+00:02:07.000 --> 00:02:30.000
+<v Daniel Brooks>Stand-ups are running long. Yesterday was 28 minutes. A lot of it was problem solving that should have been a separate conversation.
+
+00:02:32.000 --> 00:02:58.000
+<v Arjun Mehta>Okay. On CI, I think we should split the suite: unit tests on every push, integration tests on merge to main. Kenji, could you own that?
+
+00:03:00.000 --> 00:03:15.000
+<v Kenji Watanabe>Yes. I'll split the pipeline by end of next sprint, so October 30th. I think we can get the per-push run under eight minutes.
+
+00:03:17.000 --> 00:03:40.000
+<v Mei Lin>For the flaky test, I will replace the real maps API with a recorded stub using contract fixtures. I can do that by October 21st.
+
+00:03:42.000 --> 00:04:06.000
+<v Arjun Mehta>Decision on stand-ups: hard stop at fifteen minutes, and anything needing discussion goes to a parking lot right after. Daniel, can you be the timekeeper this sprint?
+
+00:04:08.000 --> 00:04:16.000
+<v Daniel Brooks>Sure, I'll keep time and keep the parking lot list in the team channel.
+
+00:04:18.000 --> 00:04:45.000
+<v Kenji Watanabe>One more thing that didn't go well: the payment incident follow-ups took time we had not planned for. The CI config check took most of my week.
+
+00:04:47.000 --> 00:05:12.000
+<v Arjun Mehta>That's fair. Decision: we reserve 20 percent of each sprint's capacity for operational work and incident follow-ups, starting sprint 22.
+
+00:05:14.000 --> 00:05:30.000
+<v Mei Lin>Should we also revisit the ledger timeline given that?
+
+00:05:32.000 --> 00:05:55.000
+<v Arjun Mehta>Yes. I'll re-estimate the ledger milestones with the 20 percent reserve and share the updated plan with Priya by October 20th.
+
+00:05:57.000 --> 00:06:10.000
+<v Arjun Mehta>Great retro, thanks everyone.

@@ -1,0 +1,2 @@
+# Optional: audio -> transcript (POST /api/transcribe). Adds ~200 MB (CTranslate2 + model download on first use).
+faster-whisper==1.2.*

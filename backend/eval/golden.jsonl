@@ -1,0 +1,22 @@
+{"q": "What was the root cause of the payment failures on October 7th?", "meeting": "incident", "at": "01:15"}
+{"q": "How long did the payment outage last and how many payments failed?", "meeting": "incident", "at": "00:04"}
+{"q": "Why was the incident detected so late?", "meeting": "incident", "at": "02:35"}
+{"q": "Who will set up the canary deployment and by when?", "meeting": "incident", "at": "05:20"}
+{"q": "Are customers getting any compensation for the outage?", "meeting": "incident", "at": "07:35"}
+{"q": "What should the on-call runbook say?", "meeting": "incident", "at": "08:02"}
+{"q": "What is the target for Android checkout abandonment?", "meeting": "roadmap", "at": "05:45"}
+{"q": "Why was offline ordering not committed for Q4?", "meeting": "roadmap", "at": "04:30"}
+{"q": "What is in scope for loyalty points this quarter?", "meeting": "roadmap", "at": "06:40"}
+{"q": "When will the checkout prototypes be ready?", "meeting": "roadmap", "at": "07:58"}
+{"q": "What risk was raised about the maps API pricing?", "meeting": "roadmap", "at": "09:30"}
+{"q": "How many engineers are available this quarter?", "meeting": "roadmap", "at": "00:32"}
+{"q": "Why are people batching their changes?", "meeting": "retro", "at": "01:12"}
+{"q": "What will be done about the flaky address autocomplete test?", "meeting": "retro", "at": "03:17"}
+{"q": "What was decided about stand-up meetings?", "meeting": "retro", "at": "03:42"}
+{"q": "How much sprint capacity is reserved for operational work?", "meeting": "retro", "at": "04:47"}
+{"q": "Who is re-estimating the ledger milestones?", "meeting": "retro", "at": "05:32"}
+{"q": "Helm chart default connection pool", "meeting": "incident", "at": "01:15"}
+{"negative": true, "q": "What is the capital of Australia?"}
+{"negative": true, "q": "Write me a poem about the ocean."}
+{"negative": true, "q": "What did the board decide about the office relocation to Berlin?"}
+{"negative": true, "q": "What is the price of Bitcoin today?"}

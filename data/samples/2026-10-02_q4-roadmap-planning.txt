@@ -1,0 +1,32 @@
+Meeting: Q4 Roadmap Planning - Mobile Ordering App
+Date: 2026-10-02
+Attendees: Priya Raman (Product Manager), Arjun Mehta (Engineering Lead), Lena Fischer (Design Lead), Tom Okafor (Data Analyst)
+
+[00:00:05] Priya Raman: Thanks everyone for joining. The goal today is to agree the Q4 roadmap for the mobile ordering app. We have three candidate themes: loyalty points, offline ordering, and a redesign of the checkout flow.
+[00:00:32] Arjun Mehta: Before we go into themes, I want to flag capacity. We have four backend engineers and two mobile engineers for the quarter, and one backend engineer is on leave for three weeks in November.
+[00:00:58] Priya Raman: Noted. So realistically we can commit to two themes, not three.
+[00:01:20] Tom Okafor: Let me share the data. Checkout abandonment is at 31 percent on Android and 22 percent on iOS. The biggest drop is on the payment method screen. Users who have to re-enter card details abandon twice as often.
+[00:02:05] Lena Fischer: That matches the usability sessions. Six out of eight participants struggled with the address and payment step. The saved-card option is hidden below the fold.
+[00:02:41] Priya Raman: Then checkout redesign looks like the highest impact. What about loyalty points?
+[00:03:02] Tom Okafor: Loyalty is a retention play. Our 90-day retention is 38 percent. Competitors with loyalty programs report around 45 percent, but that is industry data, not ours, so I would treat it as directional.
+[00:03:40] Arjun Mehta: Loyalty also needs a points ledger, which is a new service with its own consistency requirements. That is at least six weeks of backend work before any user-facing feature.
+[00:04:15] Lena Fischer: And offline ordering? I know stores in rural areas have patchy connectivity.
+[00:04:30] Arjun Mehta: Offline ordering is technically the riskiest. We would need local queueing, conflict resolution when the device reconnects, and payment can't really be offline. I would not commit to it this quarter.
+[00:05:10] Priya Raman: Okay. Proposal: Q4 commits to checkout redesign as theme one and loyalty points ledger as theme two. Offline ordering moves to a Q1 discovery spike. Any objections?
+[00:05:31] Tom Okafor: No objection, but I want success metrics agreed now, not after launch.
+[00:05:45] Priya Raman: Fair. Decision: the checkout redesign target is to reduce Android abandonment from 31 percent to 24 percent by end of December.
+[00:06:12] Arjun Mehta: For the ledger, the success criterion should be technical for Q4: ledger service in production with double-entry accounting and zero balance drift in reconciliation.
+[00:06:40] Priya Raman: Agreed. Decision: loyalty Q4 scope is the ledger service only. The user-facing points screen ships in Q1.
+[00:07:05] Lena Fischer: I will need two weeks for checkout designs. Can engineering start the API work in parallel?
+[00:07:22] Arjun Mehta: Yes. The saved-cards API already exists; we need a new endpoint for default payment method and address autocomplete.
+[00:07:50] Priya Raman: Let's capture action items. Lena, checkout redesign prototypes?
+[00:07:58] Lena Fischer: I will share clickable prototypes by October 16th.
+[00:08:10] Priya Raman: Arjun, ledger design?
+[00:08:15] Arjun Mehta: I will write the ledger technical design document, including the reconciliation job, by October 10th, and get a review from the payments team.
+[00:08:40] Priya Raman: Tom, can you set up the abandonment dashboard per screen and platform?
+[00:08:47] Tom Okafor: Yes, dashboard by October 9th. I will also add a weekly email report.
+[00:09:05] Priya Raman: And I will write the offline ordering discovery brief for Q1 and circulate it by end of October.
+[00:09:30] Arjun Mehta: One risk to log: address autocomplete depends on a third-party maps API. Pricing changes in November could affect cost. I will check the contract terms.
+[00:09:58] Priya Raman: Good catch. Add that as an action for Arjun, due October 20th. Anything else?
+[00:10:10] Lena Fischer: Just that we should run a second usability round on the new checkout before release, not after.
+[00:10:25] Priya Raman: Agreed, we will plan that for the first week of November. Thanks all.
