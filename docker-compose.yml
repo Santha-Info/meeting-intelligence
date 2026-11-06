@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Leave empty to run in offline demo mode; set it (e.g. in a .env file) for Claude answers.
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      MIA_LLM_MODEL: ${MIA_LLM_MODEL:-claude-opus-5-5}
+    volumes:
+      - mia-data:/data   # SQLite database survives container restarts
+    restart: unless-stopped
+
+volumes:
+  mia-data:
